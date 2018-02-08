@@ -5,7 +5,7 @@ import lxml.html
 
 def getHtml(url):
     """
-    获取网页的源代码
+    获取网页源代码
     :param url:
     :return: Html
     """
@@ -52,7 +52,6 @@ def verifyIp(ipAndPortList):
             proxies = urllib.request.ProxyHandler(proxy)    # 创建代理处理器
             opener = urllib.request.build_opener(proxies, urllib.request.HTTPHandler)   # 创建特定的opener对象
             urllib.request.install_opener(opener)
-            print(ipAndPort)
             urllib.request.urlopen(url=url)   # 通过访问url，检测ip是否可用
         except (urllib.error.URLError, ConnectionResetError):
             index = ipAndPortList.index(ipAndPort)
@@ -64,7 +63,6 @@ def verifyIp(ipAndPortList):
 
 if __name__ == '__main__':
     ipUrl = "https://www.kuaidaili.com/free/inha/{}/"
-    reusabilityIp = []
     for num in range(1, 2117):
         try:
             ipUrl = ipUrl.format(num)
@@ -73,7 +71,7 @@ if __name__ == '__main__':
             ipList = verifyIp(ipAndPortList)
             if len(ipList) == 0:
                 continue
-            reusabilityIp.append(ipList)
+            ipList += ipList
         except:
             continue
-    print(reusabilityIp)
+    print(ipList)
