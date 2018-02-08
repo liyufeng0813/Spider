@@ -59,7 +59,8 @@ def getEveryItem(source):
     return movieList
 
 def writeData(movieList):
-    with open('doubanMovie_TOP250.csv', 'w', encoding='utf-8', newline='') as f:
+    with open('csv/doubanMovie_TOP250.csv', 'w', encoding='utf-8_sig', newline='') as f:
+        # excel不能读取utf-8编码,需要指定BOM-utf-8
         writer = csv.DictWriter(f, fieldnames=['title','site','type', 'directorAndActor', 'quote', 'star', 'date', 'url'])
         writer.writeheader()
         for each in movieList:
