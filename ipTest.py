@@ -5,7 +5,7 @@ import lxml.html
 
 def getHtml(url):
     """
-    获取网页源代码
+    获取网页的源代码
     :param url:
     :return: Html
     """
