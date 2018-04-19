@@ -98,5 +98,5 @@ class WeiBo(object):
 
 
 if __name__ == '__main__':
-    weibo = WeiBo('username', 'password')
+    weibo = WeiBo('your_username', 'your_password')
     weibo.login()
